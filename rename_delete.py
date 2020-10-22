@@ -13,22 +13,34 @@ def main():
 
         for item in filenames:
             if item in files_to_remove:
-                rename_file_item = os.path.join(dirpath, item)
-                os.rename_file(rename_file_item)
+                try:
+                    item_to_delete = os.path.join(dirpath, item)
+                    os.remove(item_to_delete)
+                    print("removed item:", item)
+                except Exception as exc:
+                    print(exc)
 
             elif rename_file in item:
-                new_item = item.replace(rename_file,"")  # replacing 'rename_file' with empty space
-                print(new_item)
-                replace_item = os.path.join(dirpath, item)
-                replace_with = os.path.join(dirpath, new_item)
-                os.rename(replace_item, replace_with)
+                try:
+                    new_item = item.replace(
+                        rename_file, ""
+                    )  # replacing 'rename_file' with empty space
+                    print(new_item)
+                    replace_item = os.path.join(dirpath, item)
+                    replace_with = os.path.join(dirpath, new_item)
+                    os.rename(replace_item, replace_with)
+                except Exception as exc:
+                    print(exc)
 
         for item in dirnames:
             if rename_file in item:
-                new_item = item.replace(rename_file,"")
-                replace_item = os.path.join(dirpath, item)
-                replace_with = os.path.join(dirpath, new_item)
-                os.rename(replace_item, replace_with)
+                try:
+                    new_item = item.replace(rename_file, "")
+                    replace_item = os.path.join(dirpath, item)
+                    replace_with = os.path.join(dirpath, new_item)
+                    os.rename(replace_item, replace_with)
+                except Exception as exc:
+                    print(exc)
 
 
 if __name__ == "__main__":
