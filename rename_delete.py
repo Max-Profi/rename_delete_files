@@ -2,7 +2,7 @@
 
 import os
 
-dir_path = "F:\\DATA SCIENCE\\[OTUS] Разработчик Python. Продвинутый курс (2020)"
+dir_path = "path to folder"
 
 rename_file = "some name"  # part of a file name that needs to be renamed/removed
 
